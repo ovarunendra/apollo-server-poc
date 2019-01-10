@@ -1,5 +1,12 @@
 const { RESTDataSource } = require('apollo-datasource-rest');
 
+function wait(time) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, time);
+  });
+}
 class RestAPI extends RESTDataSource {
   constructor() {
     super();
@@ -7,7 +14,10 @@ class RestAPI extends RESTDataSource {
   }
 
   async getUser() {
-    return this.get(`users`);
+    const data = [{ gender: 'male' }];
+    await wait(300);
+    return data;
+    // return this.get(`users`);
   }
 }
 
